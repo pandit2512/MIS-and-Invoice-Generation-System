@@ -2,6 +2,8 @@ package com.codeB.MIS_Invoice_generation_system.entity;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -36,10 +38,12 @@ public class User {
     private String role; // 'ADMIN' or 'SALESPERSON'
 
     @Enumerated(EnumType.STRING)
-    private Status status = Status.ACTIVE;
+    private Status status = Status.INACTIVE;
 
     @Column(updatable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+    
 
     public enum Status {
         ACTIVE, INACTIVE

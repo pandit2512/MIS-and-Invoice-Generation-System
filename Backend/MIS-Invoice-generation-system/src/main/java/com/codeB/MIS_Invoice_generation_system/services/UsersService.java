@@ -12,8 +12,10 @@ public class UsersService {
 	@Autowired
 	private UsersRepository usersRepository;
 
-	public String register(User request) {
-        if (usersRepository.existsByEmail(request.getEmail())) {
+	public String register(User user) {
+        if (usersRepository.existsByEmail(user.getEmail())) {
             throw new RuntimeException("Email already exists");
-        }
+       - }
+        return "registered successfully";
+}
 }
